@@ -1,0 +1,32 @@
+{% extends "::base.html.twig" %}
+    {% block stylesheets %}
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    {% endblock %}
+        {% block body %}
+            <div class="container">
+                <div class="row">
+                    <hr>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <div class="pull-right">
+                            <span>Connecté en tant que : {{ app.user.username }} </span>
+                            <a class="btn btn-default" href="{{ path('advert_index') }}">Annonces</a>
+                            <a class="btn btn-default" href="{{ path('category_index') }}">Categories</a>
+                            <a class="btn btn-default" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                        </div>
+                    {% else %}
+                        <a class="btn btn-default pull-right" href="{{ path('fos_user_security_login') }}">Connexion</a>
+                    {% endif %}
+                    <a class="btn btn-default" href="{{ path('loic_cms_homepage') }}">Accueil</a>
+                    <hr>
+                    {% block container %}
+                        {% block fos_user_content %}
+                        {% endblock fos_user_content %}
+                    {% endblock %}
+                </div>
+            </div>
+        {% endblock %}
+{% block javascripts %}
+    <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="//cdn.ckeditor.com/4.5.10/basic/ckeditor.js"></script>
+{% endblock %}
