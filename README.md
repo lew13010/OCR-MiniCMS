@@ -8,13 +8,13 @@
 * [StofDoctrineExtensionsBundle](https://github.com/stof/StofDoctrineExtensionsBundle)
 
 
-## INSTALLATION
+## DOWNLOAD AND INSTALLATION
 
 ```
-
+$ git clone https://github.com/lew13010/OCR-MiniCMS.git
 ```
 
-### Enable the bundle
+#### Enable the bundle
 
 * Enable the bundle in your *app/AppKernel.php* :
 
@@ -30,7 +30,7 @@ class AppKernel extends Kernel
         ]
 ```
 
-### Routes
+#### Routes
 
 * Routes *(app/config/routing.yml) :*
 
@@ -40,7 +40,7 @@ loic_cms:
     prefix:   /
 ```
 
-### Configuration and Parameters
+#### Configuration and Parameters
 
 * Activate Sluggable *(app/config/config.yml) :*
 
@@ -89,28 +89,28 @@ parameters:
 ### Database
 
 ```
-$ doctrine:database:create
+$ php bin/console doctrine:database:create
 ```
 
 ```
-$ doctrine:schema:update --force
+$ php bin/console doctrine:schema:update --force
 ```
 
-### Create first "ADMIN"
+## Create first "ADMIN"
 
 ```
-$ fos:user:create testuser test@example.com p@ssword
-```
-
-```
-$ fos:user:activate testuser
+$ php bin/console fos:user:create testuser test@example.com p@ssword
 ```
 
 ```
-$ fos:user:promote testuser ROLE_ADMIN
+$ php bin/console fos:user:activate testuser
 ```
 
-### USE
+```
+$ php bin/console fos:user:promote testuser ROLE_ADMIN
+```
+
+## USE
 
 * IMPORTANT
 
