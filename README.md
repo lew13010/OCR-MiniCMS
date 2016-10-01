@@ -80,7 +80,7 @@ twig:
 
 * Roles access article *(app/config/parameters.yml) :*
 
-You can choice the role by default :
+You can choose the role by default :
 ```
 parameters:
     role_default: IS_AUTHENTICATED_ANONYMOUSLY #IS_AUTHENTICATED_ANONYMOUSLY or ROLE_ADMIN or ROLE_USER
