@@ -8,11 +8,18 @@
 * [StofDoctrineExtensionsBundle](https://github.com/stof/StofDoctrineExtensionsBundle)
 
 
-## DOWNLOAD AND INSTALLATION
+## DOWNLOAD
 
 ```
 $ git clone https://github.com/lew13010/OCR-MiniCMS.git
 ```
+
+OR
+
+Download [master.zip](https://github.com/lew13010/OCR-MiniCMS/archive/master.zip), and unzip in your folder.
+
+
+## INSTALLATION
 
 #### Enable the bundle
 
