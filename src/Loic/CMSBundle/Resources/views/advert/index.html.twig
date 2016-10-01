@@ -1,0 +1,33 @@
+{% extends 'LoicCMSBundle:Default:index.html.twig' %}
+
+{% block container %}
+    <h1>Liste des articles</h1>
+
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for advert in adverts %}
+            <tr>
+                <td><a href="{{ path('advert_show', { 'id': advert.id }) }}">{{ advert.id }}</a></td>
+                <td>{{ advert.title }}</td>
+                <td>{{ advert.content }}</td>
+                <td>{% if advert.date %}{{ advert.date|date('d/m/Y') }}{% endif %}</td>
+                <td>
+                    <a href="{{ path('advert_show', { 'id': advert.id }) }}" class="btn btn-default" type="button">Voir</a>
+                    <a href="{{ path('advert_edit', { 'id': advert.id }) }}" class="btn btn-info" type="button">Editer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    <a href="{{ path('advert_new') }}" class="btn btn-primary" type="button">Nouvelle Annonce</a>
+{% endblock %}

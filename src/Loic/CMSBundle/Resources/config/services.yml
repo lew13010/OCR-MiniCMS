@@ -1,0 +1,12 @@
+services:
+    loic_cms.form.ckeditor:
+        class: Loic\MinicmsBundle\Form\CkeditorType
+        tags:
+            - { name: form.type, alias: ckeditor }
+
+    gedmo.listener.loggable:
+        class: Gedmo\Loggable\LoggableListener
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+        calls:
+            - [ setAnnotationReader, [ "@annotation_reader" ] ]

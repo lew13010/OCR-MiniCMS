@@ -1,0 +1,13 @@
+{% extends 'LoicCMSBundle:Default:index.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block container %}
+    <h1>Category creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Valider" class="btn btn-success" />
+    {{ form_end(form) }}
+    <hr>
+    <a href="{{ path('category_index') }}" class="btn btn-default" type="button">Retour à la liste</a>
+{% endblock %}

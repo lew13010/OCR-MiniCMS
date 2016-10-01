@@ -1,0 +1,29 @@
+{% extends 'LoicCMSBundle:Default:index.html.twig' %}
+
+{% block container %}
+    <h1>Liste des categories</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td><a href="{{ path('category_show', { 'id': category.id }) }}">{{ category.id }}</a></td>
+                <td>{{ category.name }}</td>
+                <td>
+                    <a href="{{ path('category_show', { 'id': category.id }) }}" class="btn btn-default" type="button">Voir</a>
+                    <a href="{{ path('category_edit', { 'id': category.id }) }}" class="btn btn-info" type="button">Editer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    <a href="{{ path('category_new') }}" class="btn btn-primary" type="button">Nouvelle Categorie</a>
+{% endblock %}

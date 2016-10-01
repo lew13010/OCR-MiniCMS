@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+
+{% block container %}
+    <h1>{{ category.name }}</h1>
+    <p>Liste des articles appartenant à cette catégorie :</p>
+    <ul>
+        {% for advert in adverts %}
+            <li><a href="{{ path('advert_view', {'category': category.slug, 'slug': advert.slug}) }}">{{ advert.title }}</a></li>
+        {% endfor %}
+        {% for advert2 in adverts2 %}
+            <li><a href="{{ path('advert_view', {'category': category.slug, 'slug': advert2.slug}) }}">{{ advert2.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

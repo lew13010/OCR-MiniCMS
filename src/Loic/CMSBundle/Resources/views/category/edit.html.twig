@@ -1,0 +1,16 @@
+{% extends 'LoicCMSBundle:Default:index.html.twig' %}
+{% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
+
+{% block container %}
+    <h1>Category edit</h1>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="Valider" class="btn btn-success"/>
+    {{ form_end(edit_form) }}
+    <hr>
+    {{ form_start(delete_form) }}
+        <a href="{{ path('category_index') }}" class="btn btn-default" type="button">Retour à la liste</a>
+        <input type="submit" value="Delete" class="btn btn-danger">
+    {{ form_end(delete_form) }}
+{% endblock %}

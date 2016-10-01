@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+{% block container %}
+    {% if advert.access == 'IS_AUTHENTICATED_ANONYMOUSLY' or is_granted(advert.access) %}
+        <p>
+            Cet article est paru dans les catégories suivantes :
+            <b><a href="{{ path('category_view', {'slug': advert.firstCategory.slug}) }}">{{ advert.firstCategory.name }}</a></b>
+            {% if advert.categories is defined %}
+                {% for category in advert.categories %}
+                    - <a href="{{ path('category_view', {'slug': category.slug}) }}">{{ category }}</a>
+                {% endfor %}
+            {% endif %}
+        </p>
+        <h1>{{ advert.title }}</h1>
+        <p>{{ advert.content }}</p>
+        <p><b>Date :</b> {{ advert.date|date("d/m/Y") }}</p>
+    {% else %}
+        <h2>Vous n'avez pas les droits d'accès à cet article.</h2>
+        <a class="btn btn-default" href="{{ path('loic_cms_homepage') }}">Accueil</a>
+    {% endif %}
+{% endblock %}

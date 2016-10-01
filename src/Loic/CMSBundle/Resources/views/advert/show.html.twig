@@ -1,0 +1,32 @@
+{% extends 'LoicCMSBundle:Default:index.html.twig' %}
+
+{% block container %}
+    <h1>Advert</h1>
+
+    <table class="table table-stripped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ advert.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ advert.title }}</td>
+            </tr>
+            <tr>
+                <th>Contenu</th>
+                <td>{{ advert.content }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if advert.date %}{{ advert.date|date('d/m/Y') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    {{ form_start(delete_form) }}
+    <a href="{{ path('advert_index') }}" class="btn btn-default" type="button">Retour à la liste</a>
+    <a href="{{ path('advert_edit', { 'id': advert.id }) }}" class="btn btn-info" type="button">Editer</a>
+        <input type="submit" value="Supprimer" class="btn btn-danger">
+    {{ form_end(delete_form) }}
+{% endblock %}
