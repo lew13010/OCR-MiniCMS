@@ -23,7 +23,9 @@ Download [master.zip](https://github.com/lew13010/OCR-MiniCMS/archive/master.zip
 
 #### Enable the bundle
 
-* Enable the bundle in your *app/AppKernel.php* :
+* Enable the bundle in *Kernel*
+
+*app/AppKernel.php* :
 
 ```
 class AppKernel extends Kernel
@@ -39,7 +41,9 @@ class AppKernel extends Kernel
 
 #### Routes
 
-* Routes *(app/config/routing.yml) :*
+* Routes 
+
+*(app/config/routing.yml) :*
 
 ```
 loic_cms:
@@ -48,9 +52,10 @@ loic_cms:
 ```
 
 #### Configuration and Parameters
+    
+* Activate Sluggable 
 
-* Activate Sluggable *(app/config/config.yml) :*
-
+*(app/config/config.yml) :*
 
 ```
 stof_doctrine_extensions:
@@ -59,7 +64,9 @@ stof_doctrine_extensions:
             sluggable: true
 ```
 
-* Activate loggable *(app/config/config.yml) :*
+* Activate loggable 
+
+*(app/config/config.yml) :*
 
 ```
 doctrine:
@@ -75,7 +82,18 @@ doctrine:
                 dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Loggable/Entity"
 ```
 
-* Configuration *(app/config/security.yml) :*
+* Configuration FosUser and *security.yml* 
+
+*(app/config/config.yml) :*
+
+```
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Loic\UserBundle\Entity\User
+```
+
+*(app/config/security.yml) :*
 ```
 security:
     encoders:
@@ -108,7 +126,9 @@ security:
         - { path: ^/admin/, role: ROLE_ADMIN }
 ```
 
-* Versioning article *(app/config/config.yml) :*
+* Versioning article 
+
+*(app/config/config.yml) :*
 
 You can change the parameter for activate or not.
 ```
@@ -117,7 +137,9 @@ loic_cms:
 ```
 
 
-* Roles access article *(app/config/config.yml) :*
+* Roles access article 
+
+*(app/config/config.yml) :*
 
 You can choose the role by default :
 ```
