@@ -79,7 +79,12 @@ class AdvertController extends Controller
     public function editAction(Request $request, Advert $advert)
     {
         $deleteForm = $this->createDeleteForm($advert);
-        $editForm = $this->createForm('Loic\CMSBundle\Form\AdvertType', $advert);
+        $editForm = $this->createForm('Loic\CMSBundle\Form\AdvertType', $advert, array(
+            'extra_fields_message' => array(
+                'primary' => array(
+                    $this->container->getParameter('role_default')
+                ))
+        ));
         $editForm->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();

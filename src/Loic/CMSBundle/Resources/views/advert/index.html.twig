@@ -18,7 +18,7 @@
             <tr>
                 <td><a href="{{ path('advert_show', { 'id': advert.id }) }}">{{ advert.id }}</a></td>
                 <td>{{ advert.title }}</td>
-                <td>{{ advert.content }}</td>
+                <td>{{ advert.content|raw }}</td>
                 <td>{% if advert.date %}{{ advert.date|date('d/m/Y') }}{% endif %}</td>
                 <td>
                     <a href="{{ path('advert_show', { 'id': advert.id }) }}" class="btn btn-default" type="button">Voir</a>

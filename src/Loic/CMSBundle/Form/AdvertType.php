@@ -38,10 +38,12 @@ class AdvertType extends AbstractType
                     'User'  => 'ROLE_USER',
                     'Admin' => 'ROLE_ADMIN',
                 ),
-                'preferred_choices'  => $options['extra_fields_message']['primary'],
+                'preferred_choices' => $options['extra_fields_message']['primary'],
             ))
         ;
     }
+
+
     
     /**
      * @param OptionsResolver $resolver

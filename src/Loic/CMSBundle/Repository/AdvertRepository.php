@@ -14,16 +14,22 @@ class AdvertRepository extends \Doctrine\ORM\EntityRepository
 {
     public function findByCategories($category)
     {
-        $qb =  $this->createQueryBuilder('a')
-            ->select('a')
-            ->leftJoin('a.categories', 'c')
-            ->addSelect('c');
+        $qb =  $this->createQueryBuilder('a');
 
-        $qb = $qb->add('where', $qb->expr()->in('c', ':c'))
-            ->setParameter('c', $category)
+        $qb
+            ->select('a')
+            ->where('a.firstCategory = :c')
+            ->setParameter(':c', $category)
+            ;
+
+        $qb
             ->getQuery()
             ->getResult();
-
         return $qb;
     }
 }
+
+   /* ->leftJoin('a.categories', 'c')
+    ->addSelect('c')
+    ->where('cf = :cf OR c = :c')
+    ->setParameters(array('cf' => $category, 'c' => $category))*/

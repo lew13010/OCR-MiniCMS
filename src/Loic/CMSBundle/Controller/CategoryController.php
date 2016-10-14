@@ -130,16 +130,13 @@ class CategoryController extends Controller
 
     public function viewAction(Category $category)
     {
-        $adverts = $this->getDoctrine()
-            ->getRepository('LoicCMSBundle:Advert')
-            ->findBy(array('firstCategory' => $category));
 
-        $adverts2 = $this->getDoctrine()->getRepository('LoicCMSBundle:Advert')->findByCategories($category);
+        $adverts = $this->getDoctrine()
+            ->getRepository('LoicCMSBundle:Advert')->findByCategories($category->getId());
 
         return $this->render('LoicCMSBundle:Default:category.html.twig', array(
             'category'      =>  $category,
             'adverts'       =>  $adverts,
-            'adverts2'      =>  $adverts2
         ));
     }
 }

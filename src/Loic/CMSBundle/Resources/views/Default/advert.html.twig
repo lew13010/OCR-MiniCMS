@@ -12,7 +12,7 @@
             {% endif %}
         </p>
         <h1>{{ advert.title }}</h1>
-        <p>{{ advert.content }}</p>
+        <p>{{ advert.content|raw }}</p>
         <p><b>Date :</b> {{ advert.date|date("d/m/Y") }}</p>
     {% else %}
         <h2>Vous n'avez pas les droits d'accès à cet article.</h2>
