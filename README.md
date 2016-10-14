@@ -75,21 +75,53 @@ doctrine:
                 dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Loggable/Entity"
 ```
 
+* Configuration *(app/config/security.yml) :*
+```
+security:
+    encoders:
+        Loic\UserBundle\Entity\User: sha512
+
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        main:
+            id: fos_user.user_provider.username
+
+    firewalls:
+        main:
+            pattern: ^/
+            anonymous: true
+            provider: main
+            form_login:
+                login_path: fos_user_security_login
+                check_path: fos_user_security_check
+            logout:
+                path: fos_user_security_logout
+                target: loic_cms_homepage
+            remember_me:
+                secret: %secret%
+
+
+    access_control:
+        - { path: ^/admin/, role: ROLE_ADMIN }
+```
+
 * Versioning article *(app/config/config.yml) :*
 
 You can change the parameter for activate or not.
 ```
-twig:
-    globals:
-        versioning: true #true or false
+loic_cms:
+    versioning: true #true or false
 ```
 
 
-* Roles access article *(app/config/parameters.yml) :*
+* Roles access article *(app/config/config.yml) :*
 
 You can choose the role by default :
 ```
-parameters:
+loic_cms:
     role_default: IS_AUTHENTICATED_ANONYMOUSLY #IS_AUTHENTICATED_ANONYMOUSLY or ROLE_ADMIN or ROLE_USER
 ```
 
