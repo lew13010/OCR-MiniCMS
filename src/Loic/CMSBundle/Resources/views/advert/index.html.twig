@@ -8,7 +8,8 @@
             <tr>
                 <th>Id</th>
                 <th>Titre</th>
-                <th>Contenu</th>
+                <th>Categorie Principale</th>
+                <th>Categories Secondaires</th>
                 <th>Date</th>
                 <th>Actions</th>
             </tr>
@@ -18,7 +19,14 @@
             <tr>
                 <td><a href="{{ path('advert_show', { 'id': advert.id }) }}">{{ advert.id }}</a></td>
                 <td>{{ advert.title }}</td>
-                <td>{{ advert.content|raw }}</td>
+                <td>{{ advert.firstCategory }}</td>
+                <td>
+                    {% if advert.categories is defined %}
+                        {% for category in advert.categories %}
+                            {{ category }} {% if not loop.last %} - {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </td>
                 <td>{% if advert.date %}{{ advert.date|date('d/m/Y') }}{% endif %}</td>
                 <td>
                     <a href="{{ path('advert_show', { 'id': advert.id }) }}" class="btn btn-default" type="button">Voir</a>

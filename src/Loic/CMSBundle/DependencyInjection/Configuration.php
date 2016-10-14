@@ -20,6 +20,16 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('loic_cms');
 
+        $rootNode
+            ->children()
+                ->booleanNode('versioning')
+                ->defaultValue(true)
+                ->end()
+                ->scalarNode('role_default')
+                ->defaultValue('IS_AUTHENTICATED_ANONYMOUSLY')
+                ->end()
+            ->end();
+
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
         // more information on that topic.

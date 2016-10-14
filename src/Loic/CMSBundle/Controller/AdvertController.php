@@ -39,7 +39,7 @@ class AdvertController extends Controller
         $form = $this->createForm('Loic\CMSBundle\Form\AdvertType', $advert, array(
             'extra_fields_message' => array(
                 'primary' => array(
-                    $this->container->getParameter('role_default')
+                    $this->container->getParameter('loic_cms.role_default')
                 ))
         ));
         $form->handleRequest($request);
@@ -82,9 +82,10 @@ class AdvertController extends Controller
         $editForm = $this->createForm('Loic\CMSBundle\Form\AdvertType', $advert, array(
             'extra_fields_message' => array(
                 'primary' => array(
-                    $this->container->getParameter('role_default')
+                    $this->container->getParameter('loic_cms.role_default')
                 ))
         ));
+        $versioning = $this->container->getParameter('loic_cms.versioning');
         $editForm->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
@@ -106,6 +107,7 @@ class AdvertController extends Controller
             'edit_form'     => $editForm->createView(),
             'delete_form'   => $deleteForm->createView(),
             'logs'          => $logs,
+            'versioning'    => $versioning,
         ));
     }
 

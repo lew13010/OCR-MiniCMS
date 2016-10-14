@@ -22,6 +22,9 @@ class LoicCMSExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        $container->setParameter('loic_cms.versioning', $config['versioning']);
+        $container->setParameter('loic_cms.role_default', $config['role_default']);
+
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }

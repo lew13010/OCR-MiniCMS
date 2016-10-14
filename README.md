@@ -110,10 +110,6 @@ $ php bin/console fos:user:create testuser test@example.com p@ssword
 ```
 
 ```
-$ php bin/console fos:user:activate testuser
-```
-
-```
 $ php bin/console fos:user:promote testuser ROLE_ADMIN
 ```
 

@@ -35,7 +35,6 @@ class Category
      */
     private $slug;
 
-
     /**
      * Get id
      *

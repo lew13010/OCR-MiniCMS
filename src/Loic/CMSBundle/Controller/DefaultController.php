@@ -5,6 +5,7 @@ namespace Loic\CMSBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Loic\CMSBundle\Entity\Advert;
 use Loic\CMSBundle\Entity\Category;
+use Symfony\Component\DependencyInjection\Container;
 
 class DefaultController extends Controller
 {

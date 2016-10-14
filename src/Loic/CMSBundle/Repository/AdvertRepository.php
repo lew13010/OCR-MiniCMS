@@ -4,6 +4,8 @@ namespace Loic\CMSBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
+use Loic\CMSBundle\Entity\Category;
+
 /**
  * AdvertRepository
  *
@@ -12,24 +14,21 @@ use Doctrine\ORM\QueryBuilder;
  */
 class AdvertRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findByCategories($category)
+    public function findByCategory($category)
     {
         $qb =  $this->createQueryBuilder('a');
 
         $qb
             ->select('a')
-            ->where('a.firstCategory = :c')
-            ->setParameter(':c', $category)
-            ;
+            ->leftJoin('a.categories', 'c')
+            ->addSelect('c')
+            ->where('a.firstCategory = :cf OR c = :c')
+            ->setParameters(array('cf' => $category, 'c' => $category))
+            ->groupBy('a.title');
 
-        $qb
+        return $qb
             ->getQuery()
-            ->getResult();
-        return $qb;
+            ->getResult()
+            ;
     }
 }
-
-   /* ->leftJoin('a.categories', 'c')
-    ->addSelect('c')
-    ->where('cf = :cf OR c = :c')
-    ->setParameters(array('cf' => $category, 'c' => $category))*/

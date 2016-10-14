@@ -36,8 +36,6 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-    globals:
-        versioning: true #true or false
 
 # Doctrine Configuration
 doctrine:
@@ -86,3 +84,7 @@ stof_doctrine_extensions:
     orm:
         default:
             sluggable: true
+
+loic_cms:
+    versioning: true #true or false
+    role_default: IS_AUTHENTICATED_ANONYMOUSLY #IS_AUTHENTICATED_ANONYMOUSLY or ROLE_ADMIN or ROLE_USER
