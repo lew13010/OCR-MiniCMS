@@ -1,0 +1,4 @@
+loic_cms:
+    resource: "@LoicCMSBundle/Resources/config/routing.yml"
+    prefix:   /
+
