@@ -23,10 +23,8 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->booleanNode('versioning')
-                ->defaultValue(true)
                 ->end()
                 ->scalarNode('role_default')
-                ->defaultValue('IS_AUTHENTICATED_ANONYMOUSLY')
                 ->end()
             ->end();
 
